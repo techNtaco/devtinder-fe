@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../features/user/userSlice";
 import { AppDispatch } from "../app/store";
+import { BASE_API_URL } from '../utils/config';
 
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,13 +23,13 @@ const Login = () => {
     try {
       // Step 1: Login
       await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${BASE_API_URL}/auth/login`,
         { email, password },
         { withCredentials: true }
       );
   
       // Step 2: Fetch full profile
-      const { data } = await axios.get("http://localhost:5000/api/profile", {
+      const { data } = await axios.get(`${BASE_API_URL}/profile`, {
         withCredentials: true,
       });
 

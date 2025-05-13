@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { MatchItem } from "../types/match";
+import { BASE_API_URL } from '../utils/config';
 
 const Connections = () => {
   const [matches, setMatches] = useState<MatchItem[]>([]);
@@ -9,7 +10,7 @@ const Connections = () => {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/request/matches", {
+        const res = await axios.get(`${BASE_API_URL}/request/matches`, {
           withCredentials: true,
         });
         setMatches(res.data.matches);

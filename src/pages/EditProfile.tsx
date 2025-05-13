@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/store";
 import { User } from "../types/user";
 import { setUser } from "../features/user/userSlice";
+import { BASE_API_URL } from '../utils/config';
 
 const editableKeys: (keyof User)[] = [
   "username",
@@ -66,7 +67,7 @@ const EditProfile = () => {
       });
 
       const res = await axios.post<{ message: string; user: User }>(
-        "http://localhost:5000/api/profile/edit",
+        `${BASE_API_URL}/profile/edit`,
         updates,
         { withCredentials: true }
       );

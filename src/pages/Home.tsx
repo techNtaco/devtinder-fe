@@ -7,6 +7,7 @@ import MatchModal from "../components/MatchModal";
 import { FeedUser } from "../types/feed";
 import { setFeed, removeUserFromFeed } from "../features/feed/feedSlice";
 import { motion, AnimatePresence } from "framer-motion";
+import { BASE_API_URL } from '../utils/config';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchFeed = async () => {
-      const res = await axios.get("http://localhost:5000/api/users/feed", {
+      const res = await axios.get(`${BASE_API_URL}/users/feed`, {
         withCredentials: true,
       });
       dispatch(setFeed(res.data.feed));

@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { AppDispatch } from "../app/store";
 import { setUser } from "../features/user/userSlice";
 import FormGroup from "../components/FormGroup";
+import { BASE_API_URL } from '../utils/config';
+
 
 const Signup = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -39,7 +41,7 @@ const Signup = () => {
     try {
       // Step 1: Signup
       await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        `${BASE_API_URL}/auth/signup`,
         {
           username,
           email,
@@ -53,7 +55,7 @@ const Signup = () => {
       );
   
       // Step 2: Fetch full profile
-      const { data } = await axios.get("http://localhost:5000/api/profile", {
+      const { data } = await axios.get(`${BASE_API_URL}/profile`, {
         withCredentials: true,
       });
   
