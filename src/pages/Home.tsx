@@ -28,7 +28,7 @@ const Home = () => {
   const handleAction = async (action: "like" | "ignore", user: FeedUser) => {
     try {
       const res = await axios.post(
-        `${BASE_API_URL}/${action}/${user._id}`,
+        `${BASE_API_URL}/request/${action}/${user._id}`,
         {},
         { withCredentials: true }
       );
