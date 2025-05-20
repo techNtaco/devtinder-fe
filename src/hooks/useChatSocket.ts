@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { useDispatch } from 'react-redux';
 import { addMessage } from '../features/chat/chatSlice';
+import { SOCKET_URL } from '../utils/config';
 
 export const useChatSocket = (roomId: string, currentUserId: string) => {
   const socketRef = useRef<Socket | null>(null);
@@ -10,7 +11,7 @@ export const useChatSocket = (roomId: string, currentUserId: string) => {
   useEffect(() => {
     if (!roomId || !currentUserId) return;
 
-    const socket = io('http://localhost:5000', { withCredentials: true });
+    const socket = io(SOCKET_URL, { withCredentials: true });
     socketRef.current = socket;
 
     socket.on('connect', () => {
