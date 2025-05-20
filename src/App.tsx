@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 import Landing from "./pages/Landing";
 import Connections from "./pages/Connections";
 import EditProfile from "./pages/EditProfile";
+import ChatPage from './pages/ChatPage';
+
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
             <Route path="home" element={<Home />} />
             <Route path="matches" element={<Connections />} />
             <Route path="edit-profile" element={<EditProfile />} />
+            <Route path="/chat/:userId" element={<ChatPage />} />
           </Route>
 
           <Route path="*" element={<div>404 - Not Found</div>} />
